@@ -21,10 +21,6 @@
         "./*"
       ]
     },
-    "types": [
-      "node",
-      "react"
-    ],
     "incremental": true,
     "esModuleInterop": true,
     "plugins": [

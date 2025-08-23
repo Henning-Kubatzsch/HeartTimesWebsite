@@ -50,7 +50,7 @@ export default function UnderConstruction() {
 
         // Heart geometry
         function makeHeartMesh() {
-          const x = -25, y = -100;
+          const x = -25, y = -99;
           const shape = new THREE.Shape();
           shape.moveTo(x + 25, y + 25);
           shape.bezierCurveTo(x + 25, y + 25, x + 20, y + 0, x + 0, y + 0);

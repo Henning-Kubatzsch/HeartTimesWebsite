@@ -1,26 +1,24 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+ :root { --pink: #ff3ea5; --white: #ffffff; --black: #0b0b0c; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: radial-gradient(1200px 800px at 15% 10%, #151518 0%, #0b0b0c 60%, #000 100%);
+      color: var(--white); font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+      overflow: hidden;
+    }
+    #stage { position: fixed; inset: 0; z-index: 0; }
+    .noise { position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: .12; mix-blend-mode: screen;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.25"/></svg>'); }
+    .overlay { position: relative; z-index: 2; height: 100vh; width: 100vw; display: grid; place-items: center; padding: 24px; text-align: center; }
+    .wrap { max-width: 900px; }
+    .brand { letter-spacing: .14em; text-transform: uppercase; font-weight: 900; opacity: .9; }
+    .brand .glitch { position: relative; display: inline-block; font-size: clamp(28px, 5vw, 56px); text-shadow: 0 0 0 var(--white); }
+    .brand .glitch::before, .brand .glitch::after { content: attr(data-text); position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; }
+    .brand .glitch::before { transform: translate(2px, 2px); color: var(--pink); filter: blur(.4px); }
+    .brand .glitch::after { transform: translate(-2px, -2px); color: #9dffa9; filter: blur(.4px); }
+    .uc { margin-top: 10px; font-size: clamp(18px, 3vw, 28px); font-weight: 800; letter-spacing: .12em; }
+    .tag { margin-top: 10px; font-size: clamp(14px, 2.2vw, 18px); opacity: .85; }
+    .cta { margin-top: 28px; display: inline-flex; gap: 12px; align-items: center; border: 2px dashed var(--pink); padding: 12px 16px; border-radius: 999px; color: var(--white); text-decoration: none; font-weight: 700; }
+    .cta:hover { background: rgba(255, 62, 165, 0.08); }
+    footer { position: fixed; bottom: 0; left: 0; right: 0; z-index: 2; padding: 10px 16px; display: flex; justify-content: center; gap: 16px; font-size: 12px; color: #c7c7d0; opacity: .9; }
+    .bullet { color: var(--pink); margin: 0 8px; }

@@ -16,13 +16,13 @@ export default function UnderConstruction() {
             <span className="glitch" data-text="HEART TIMES">HEART TIMES</span>
           </div>
           <div className="uc">UNDER CONSTRUCTION</div>
-          <div className="tag">MTB / GRAVEL — renegade, queer, loud. Back soon.</div>
-          <a className="cta" href="mailto:crew@hearttimes.cc">crew@hearttimes.cc</a>
+          <div className="tag">MTB / GRAVEL — queer, loud. Back soon.</div>
+          <a className="cta" href="mailto:kontakt@heart-times.de">kontakt@heart-times.de</a>
         </div>
       </main>
 
       <footer>
-        © 2025 Heart Times Collective <span className="bullet">•</span> Schwarz / Pink / Weiß <span className="bullet">•</span> 60 BPM
+        © 2025 Heart Times <span className="bullet"></span> 
       </footer>
 
       {/* Three.js + Inline-Init */}
@@ -50,7 +50,7 @@ export default function UnderConstruction() {
 
         // Heart geometry
         function makeHeartMesh() {
-          const x = 0, y = 0;
+          const x = -25, y = -100;
           const shape = new THREE.Shape();
           shape.moveTo(x + 25, y + 25);
           shape.bezierCurveTo(x + 25, y + 25, x + 20, y + 0, x + 0, y + 0);
@@ -63,7 +63,7 @@ export default function UnderConstruction() {
           const geom = new THREE.ExtrudeGeometry(shape, {
             depth: 16, steps: 2, bevelEnabled: true, bevelThickness: 3.6, bevelSize: 2.8, bevelSegments: 10, curveSegments: 32,
           });
-          geom.center();
+          //geom.center();
 
           const mat = new THREE.MeshStandardMaterial({
             color: 0xff3ea5, metalness: 0.12, roughness: 0.35, emissive: 0xff3ea5, emissiveIntensity: 0.32

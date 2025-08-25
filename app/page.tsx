@@ -122,7 +122,7 @@ export default function UnderConstruction() {
       const fitWidthDistance =
         sphere.radius / Math.tan(fov / 2) / camera.aspect;
       // 0.9 = dichter dran (dein Wunsch), 1.2 wäre mehr Rand
-      const distance = Math.max(fitHeightDistance, fitWidthDistance) * 0.9;
+      const distance = Math.max(fitHeightDistance, fitWidthDistance) * 0.4;
 
       camera.position.set(0, 8, distance);
       camera.lookAt(sphere.center);

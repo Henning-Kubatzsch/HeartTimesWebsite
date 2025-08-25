@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, ReactNode } from "react";
+import Image from "next/image"
 
 // ---------- UI Bits (nicht exportieren) ----------
 type GlitchTextProps = { children: ReactNode; className?: string };
@@ -66,31 +67,21 @@ function Dot() {
   return <span aria-hidden className="inline-block w-2 h-2 rounded-full bg-pink-600" />;
 }
 
-function Logo({ className = "", large = false }: { className?: string; large?: boolean }) {
+function Logo({
+  className = "",
+  large = false, // falls du's irgendwo noch nutzt
+}: { className?: string; large?: boolean }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 256 256"
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="Heart Times Logo Platzhalter"
-    >
-      <defs>
-        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="6" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <rect width="100%" height="100%" rx="24" fill="#0a0a0a" stroke="#db2777" opacity="0.25" />
-      <g filter={large ? "url(#glow)" : undefined}>
-        <path d="M128 220s-78-48-94-96c-10-30 6-68 44-68 28 0 46 24 50 30 4-6 22-30 50-30 38 0 54 38 44 68-16 48-94 96-94 96z" fill="#db2777" />
-        <polyline points="96,128 128,96 112,160 160,112" fill="none" stroke="#000" strokeWidth="10" strokeLinejoin="round" />
-        <text x="128" y="230" textAnchor="middle" fontSize="24" fill="#db2777" fontWeight="800" letterSpacing="4">HEART TIMES</text>
-      </g>
-    </svg>
+    <div className={`relative ${className}`}>
+      <Image
+        src="/Meta/logo.png"          // liegt in /public/Meta/logo.png
+        alt="Heart Times Logo"
+        fill                           // füllt den umgebenden, relativen Container
+        sizes="(max-width: 768px) 33vw, 256px"
+        style={{ objectFit: "contain" }}
+        priority
+      />
+    </div>
   );
 }
 
@@ -154,7 +145,8 @@ export default function HeartTimesSite() {
           </div>
           <div className="flex justify-center">
             <div className="w-full max-w-md aspect-square bg-zinc-900 border border-pink-600/40 rounded-3xl p-6 flex items-center justify-center shadow-[0_0_60px_-20px_#db2777]">
-              <Logo className="w-64 h-64" large />
+              <Logo className="w-80 h-80" large />*/
+
             </div>
           </div>
         </div>

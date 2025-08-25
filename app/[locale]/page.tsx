@@ -1,23 +1,18 @@
 "use client";
 
-import { useState, ReactNode } from "react";
-import Image from "next/image"
+import {useState, ReactNode} from "react";
+import Image from "next/image";
+import {useTranslations} from "next-intl";
 
-// ---------- UI Bits (nicht exportieren) ----------
+// ---------- UI Bits ----------
 type GlitchTextProps = { children: ReactNode; className?: string };
 const GlitchText = ({ children, className = "" }: GlitchTextProps) => (
   <div className={`relative inline-block font-salted ${className}`}>
     <span className="relative z-10">{children}</span>
-    <span
-      className="absolute inset-0 -z-0 translate-x-[2px] translate-y-[2px] text-fuchsia-500 blur-[0.5px] select-none"
-      aria-hidden
-    >
+    <span className="absolute inset-0 -z-0 translate-x-[2px] translate-y-[2px] text-fuchsia-500 blur-[0.5px] select-none" aria-hidden>
       {children}
     </span>
-    <span
-      className="absolute inset-0 -z-0 -translate-x-[2px] -translate-y-[2px] text-white blur-[0.5px] select-none"
-      aria-hidden
-    >
+    <span className="absolute inset-0 -z-0 -translate-x-[2px] -translate-y-[2px] text-white blur-[0.5px] select-none" aria-hidden>
       {children}
     </span>
   </div>
@@ -67,16 +62,13 @@ function Dot() {
   return <span aria-hidden className="inline-block w-2 h-2 rounded-full bg-pink-600" />;
 }
 
-function Logo({
-  className = "",
-  large = false, // falls du's irgendwo noch nutzt
-}: { className?: string; large?: boolean }) {
+function Logo({ className = "" }: { className?: string }) {
   return (
     <div className={`relative ${className}`}>
       <Image
-        src="/Meta/logo.png"          // liegt in /public/Meta/logo.png
+        src="/Meta/logo.png"
         alt="Heart Times Logo"
-        fill                           // füllt den umgebenden, relativen Container
+        fill
         sizes="(max-width: 768px) 33vw, 256px"
         style={{ objectFit: "contain" }}
         priority
@@ -100,8 +92,9 @@ function GridNoise() {
   );
 }
 
-// ---------- Page (default export) ----------
+// ---------- Page ----------
 export default function HeartTimesSite() {
+  const t = useTranslations('Home');
   const [mode, setMode] = useState<"solo" | "team">("solo");
 
   return (
@@ -114,8 +107,8 @@ export default function HeartTimesSite() {
             <span className="font-bold tracking-wider text-pink-500 text-xl">HEART TIMES</span>
           </div>
           <nav className="text-sm">
-            <a href="#about" className="px-3 py-2 rounded hover:bg-pink-600/20">About</a>
-            <a href="#signup" className="px-3 py-2 rounded hover:bg-pink-600/20">Anmeldung</a>
+            <a href="#about" className="px-3 py-2 rounded hover:bg-pink-600/20">{t('nav.about')}</a>
+            <a href="#signup" className="px-3 py-2 rounded hover:bg-pink-600/20">{t('nav.signup')}</a>
             <a href="#faq" className="px-3 py-2 rounded hover:bg-pink-600/20">FAQ</a>
           </nav>
         </div>
@@ -130,23 +123,19 @@ export default function HeartTimesSite() {
               <span className="block mt-2"><GlitchText>HEART TIMES</GlitchText></span>
               <span className="block mt-2">CHALLENGE</span>
             </h1>
-            <p className="mt-4 text-lg text-pink-200/90">
-              Selbstorganisiertes Gravel/MTB-Event. Kein Kommerz, keine Cops, nur Trails,
-              Schweiß und gute Menschen. Queer · links · punk · renegade.
-            </p>
+            <p className="mt-4 text-lg text-pink-200/90">{t('hero.lead')}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#signup" className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-pink-600 hover:bg-pink-500 transition font-semibold">
-                Anmelden
+                {t('hero.cta')}
               </a>
               <a href="#about" className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-pink-600 hover:bg-pink-600/10 transition">
-                Mehr erfahren
+                {t('hero.more')}
               </a>
             </div>
           </div>
           <div className="flex justify-center">
             <div className="w-full max-w-md aspect-square bg-zinc-900 border border-pink-600/40 rounded-3xl p-6 flex items-center justify-center shadow-[0_0_60px_-20px_#db2777]">
-              <Logo className="w-80 h-80" large />*/
-
+              <Logo className="w-80 h-80" />
             </div>
           </div>
         </div>
@@ -157,19 +146,14 @@ export default function HeartTimesSite() {
       <section id="about" className="max-w-5xl mx-auto px-4 py-16">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2">
-            <h2 className="text-3xl font-bold mb-4">Worum geht es?</h2>
-            <p className="text-zinc-200">
-              HEART TIMES ist ein DIY-Ride, kein Rennen. Wir teilen GPX-Routen, Spots
-              zum Auffüllen und einen Treffpunkt. Du bist selbst verantwortlich für
-              deine Sicherheit, dein Bike und deine Crew. Respektiere Wald, Feld und
-              Menschen. No Drop, no Nazis, no Sexismus.
-            </p>
+            <h2 className="text-3xl font-bold mb-4">{t('about.title')}</h2>
+            <p className="text-zinc-200">{t('about.body')}</p>
           </div>
           <ul className="space-y-3 text-sm">
-            <li className="flex items-center gap-3"><Dot /> Schwarzer &amp; pinker Dresscode: erwünscht, nicht Pflicht.</li>
-            <li className="flex items-center gap-3"><Dot /> FLINTA-first Startblock.</li>
-            <li className="flex items-center gap-3"><Dot /> Spenden statt Startgeld.</li>
-            <li className="flex items-center gap-3"><Dot /> After-Ride: Park, Pizza, portable Box.</li>
+            <li className="flex items-center gap-3"><Dot /> {t('about.points.0')}</li>
+            <li className="flex items-center gap-3"><Dot /> {t('about.points.1')}</li>
+            <li className="flex items-center gap-3"><Dot /> {t('about.points.2')}</li>
+            <li className="flex items-center gap-3"><Dot /> {t('about.points.3')}</li>
           </ul>
         </div>
       </section>
@@ -177,10 +161,8 @@ export default function HeartTimesSite() {
       {/* Sign Up */}
       <section id="signup" className="border-y border-pink-600/30 bg-zinc-950/50">
         <div className="max-w-5xl mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold mb-6">Anmeldung</h2>
-          <p className="text-zinc-300 mb-6">
-            Wähle <span className="font-semibold">Solo</span> oder <span className="font-semibold">Team</span>. Bei Team werden zwei Masken angezeigt.
-          </p>
+          <h2 className="text-3xl font-bold mb-6">{t('signup.title')}</h2>
+          <p className="text-zinc-300 mb-6">{t('signup.hint')}</p>
 
           {/* Mode Toggle */}
           <div className="inline-flex rounded-2xl border border-pink-600/40 overflow-hidden mb-8">
@@ -189,36 +171,36 @@ export default function HeartTimesSite() {
               className={`px-5 py-3 font-semibold ${mode === "solo" ? "bg-pink-600" : "bg-transparent hover:bg-pink-600/10"}`}
               aria-pressed={mode === "solo"}
             >
-              Solo
+              {t('signup.modes.solo')}
             </button>
             <button
               onClick={() => setMode("team")}
               className={`px-5 py-3 font-semibold ${mode === "team" ? "bg-pink-600" : "bg-transparent hover:bg-pink-600/10"}`}
               aria-pressed={mode === "team"}
             >
-              Team
+              {t('signup.modes.team')}
             </button>
           </div>
 
           <form onSubmit={(e) => { e.preventDefault(); alert("Danke! Wir melden uns per Mail."); }} className="grid gap-8">
             {mode === "solo" ? (
-              <PersonForm title="Solo" prefix="solo" />
+              <PersonForm title={t('signup.forms.solo')} prefix="solo" />
             ) : (
               <div className="grid md:grid-cols-2 gap-8">
-                <PersonForm title="Team · Person A" prefix="a" />
-                <PersonForm title="Team · Person B" prefix="b" />
+                <PersonForm title={t('signup.forms.teamA')} prefix="a" />
+                <PersonForm title={t('signup.forms.teamB')} prefix="b" />
               </div>
             )}
 
             <div className="flex items-start gap-3 text-sm">
               <input id="terms" type="checkbox" required className="mt-1 accent-pink-600" />
               <label htmlFor="terms" className="text-zinc-300">
-                Ich checke: Eigenverantwortung, Trail-Etikette, Respekt. Keine Haftung übernommen.
+                {t('signup.terms')}
               </label>
             </div>
 
             <button type="submit" className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-pink-600 hover:bg-pink-500 font-semibold">
-              Abschicken
+              {t('signup.submit')}
             </button>
           </form>
         </div>
@@ -228,10 +210,10 @@ export default function HeartTimesSite() {
       <section id="faq" className="max-w-5xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold mb-6">FAQ</h2>
         <div className="grid md:grid-cols-2 gap-6">
-          <Faq q="Brauche ich eine Race-Lizenz?" a="Nein. Das ist kein Rennen, sondern ein gemeinsamer Ride." />
-          <Faq q="Ist die Route geheim?" a="Wir teilen GPX vorab per E-Mail an Angemeldete." />
-          <Faq q="Gravel oder MTB?" a="Beides okay. Reifen ≥ 38 mm empfohlen." />
-          <Faq q="Wer organisiert das?" a="Kollektiv: queer · links · punk · renegade. DIY seit Tag eins." />
+          <Faq q={t('faq.q1')} a={t('faq.a1')} />
+          <Faq q={t('faq.q2')} a={t('faq.a2')} />
+          <Faq q={t('faq.q3')} a={t('faq.a3')} />
+          <Faq q={t('faq.q4')} a={t('faq.a4')} />
         </div>
       </section>
 
@@ -240,7 +222,7 @@ export default function HeartTimesSite() {
         <div className="max-w-5xl mx-auto px-4 py-8 text-sm text-zinc-400 flex flex-col md:flex-row items-center justify-between gap-3">
           <p>© {new Date().getFullYear()} HEART TIMES — Ride fast, be kind.</p>
           <p>
-            Kontakt:{" "}
+            {t('footer.contact')}{" "}
             <a className="underline hover:text-pink-400" href="mailto:hearttimes@riseup.net">
               hearttimes@riseup.net
             </a>

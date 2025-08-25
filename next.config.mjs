@@ -1,6 +1,9 @@
-/** @type {import('next').NextConfig} */
+// next.config.mjs (ESM)
+import createNextIntlPlugin from 'next-intl/plugin';
+
 const nextConfig = {
-  reactStrictMode: true,
+  // ...deine bestehende Config
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin(); // optional: Pfad zu i18n/request.ts übergeben
+export default withNextIntl(nextConfig);

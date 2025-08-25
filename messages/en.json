@@ -1,0 +1,40 @@
+
+{
+  "Home": {
+    "nav": { "about": "About", "signup": "Sign up" },
+    "hero": {
+      "lead": "Self-organized gravel/MTB event. No commerce, no cops—just trails, sweat and good people. Queer · left · punk · renegade.",
+      "cta": "Sign up",
+      "more": "Learn more"
+    },
+    "about": {
+      "title": "What is this?",
+      "body": "HEART TIMES is a DIY ride, not a race. We share GPX routes, refill spots and a meetup point. You are responsible for your safety, your bike and your crew. Respect the forest, fields and people. No drop, no Nazis, no sexism.",
+      "points": [
+        "Black & pink dress code: encouraged, not required.",
+        "FLINTA-first starting block.",
+        "Donations over entry fees.",
+        "After-ride: park, pizza, portable speaker."
+      ]
+    },
+    "signup": {
+      "title": "Sign up",
+      "hint": "Choose Solo or Team. Team shows two forms.",
+      "modes": { "solo": "Solo", "team": "Team" },
+      "forms": { "solo": "Solo", "teamA": "Team · Rider A", "teamB": "Team · Rider B" },
+      "terms": "Acknowledged: personal responsibility, trail etiquette, respect. No liability assumed.",
+      "submit": "Send"
+    },
+    "faq": {
+      "q1": "Do I need a race license?",
+      "a1": "No. This is a group ride, not a race.",
+      "q2": "Is the route secret?",
+      "a2": "We share GPX beforehand via email with registered riders.",
+      "q3": "Gravel or MTB?",
+      "a3": "Both OK. Tires ≥ 38 mm recommended.",
+      "q4": "Who organizes this?",
+      "a4": "Collective: queer · left · punk · renegade. DIY since day one."
+    },
+    "footer": { "contact": "Contact:" }
+  }
+}

@@ -147,7 +147,7 @@ export default function HeartTimesSite() {
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2">
             <h2 className="text-3xl font-bold mb-4">{t('about.title')}</h2>
-            <p className="text-zinc-200">{t('about.body')}</p>
+            <p className="text-zinc-200 whitespace-pre-line">{t('about.body')}</p>
           </div>
           <ul className="space-y-3 text-sm">
             <li className="flex items-center gap-3"><Dot /> {t('about.points.0')}</li>

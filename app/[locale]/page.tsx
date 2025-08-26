@@ -135,7 +135,7 @@ export default function HeartTimesSite() {
           </div>
           <div className="flex justify-center">
             <div className="w-full max-w-md aspect-square bg-zinc-900 border border-pink-600/40 rounded-3xl p-6 flex items-center justify-center shadow-[0_0_60px_-20px_#db2777]">
-              <Logo className="w-80 h-80" />
+              <Logo className="w-70 h-70" />
             </div>
           </div>
         </div>

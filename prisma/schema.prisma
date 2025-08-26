@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("PRISMA_DATABASE_URL")
+}
+
+model Participant {
+  id                 String   @id @default(cuid())
+  createdAt          DateTime @default(now())
+  locale             String?
+  mode               String
+  teamId             String?
+  name               String
+  email              String
+  selfIdentification String?
+  notes              String?
+
+  @@index([createdAt])
+  @@index([teamId])
+}

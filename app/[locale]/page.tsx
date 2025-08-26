@@ -2,7 +2,8 @@
 
 import {useState, ReactNode} from "react";
 import Image from "next/image";
-import {useTranslations} from "next-intl";
+import {useTranslations, useLocale} from "next-intl";
+
 
 // ---------- UI Bits ----------
 type GlitchTextProps = { children: ReactNode; className?: string };
@@ -96,6 +97,7 @@ function GridNoise() {
 export default function HeartTimesSite() {
   const t = useTranslations('Home');
   const [mode, setMode] = useState<"solo" | "team">("solo");
+  const locale = useLocale();
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -182,27 +184,71 @@ export default function HeartTimesSite() {
             </button>
           </div>
 
-          <form onSubmit={(e) => { e.preventDefault(); alert("Danke! Wir melden uns per Mail."); }} className="grid gap-8">
-            {mode === "solo" ? (
-              <PersonForm title={t('signup.forms.solo')} prefix="solo" />
-            ) : (
-              <div className="grid md:grid-cols-2 gap-8">
-                <PersonForm title={t('signup.forms.teamA')} prefix="a" />
-                <PersonForm title={t('signup.forms.teamB')} prefix="b" />
-              </div>
-            )}
+          <form onSubmit={async (e) => {
+            e.preventDefault();
+            const form = e.currentTarget as HTMLFormElement;
+            const fd = new FormData(form);
 
-            <div className="flex items-start gap-3 text-sm">
-              <input id="terms" type="checkbox" required className="mt-1 accent-pink-600" />
-              <label htmlFor="terms" className="text-zinc-300">
-                {t('signup.terms')}
-              </label>
+            // helper: FormData -> Entry
+            const entry = (p: string) => ({
+              name: String(fd.get(`${p}-name`) || '').trim(),
+              email: String(fd.get(`${p}-email`) || '').trim(),
+              self: String(fd.get(`${p}-flinta`) || '').trim(), // 'flinta' | 'nicht-flinta' | 'sage-ich-nicht'
+              notes: String(fd.get(`${p}-notes`) || '').trim() || undefined
+            });
+
+            // payload bauen
+            const payload =
+              mode === 'solo'
+                ? { mode: 'solo' as const, locale, entries: [entry('solo')] }
+                : { mode: 'team' as const, locale, entries: [entry('a'), entry('b')] };
+
+            // mini-validierung
+            if (payload.entries.some(r => !r.name || !r.email)) {
+              alert('Bitte Name und E-Mail ausfüllen.');
+              return;
+            }
+
+            try {
+              const res = await fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+              });
+              const data = await res.json();
+
+              if (res.ok && data?.ok) {
+                alert('Danke! Wir melden uns per Mail.');
+                form.reset();
+                setMode('solo'); // zurücksetzen, optional
+              } else {
+                alert(`Fehler: ${data?.error ?? 'Unbekannter Fehler'}`);
+              }
+            } catch {
+              alert('Netzwerkfehler. Versuch es später nochmal.');
+            }
+          }}
+          className="grid gap-8">        
+          {mode === 'solo' ? (
+            <PersonForm title={t('signup.forms.solo')} prefix="solo" />
+          ) : (
+            <div className="grid md:grid-cols-2 gap-8">
+              <PersonForm title={t('signup.forms.teamA')} prefix="a" />
+              <PersonForm title={t('signup.forms.teamB')} prefix="b" />
             </div>
+          )}
 
-            <button type="submit" className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-pink-600 hover:bg-pink-500 font-semibold">
-              {t('signup.submit')}
-            </button>
-          </form>
+          <div className="flex items-start gap-3 text-sm">
+            <input id="terms" type="checkbox" required className="mt-1 accent-pink-600" />
+            <label htmlFor="terms" className="text-zinc-300">
+              {t('signup.terms')}
+            </label>
+          </div>
+
+          <button type="submit" className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-pink-600 hover:bg-pink-500 font-semibold">
+            {t('signup.submit')}
+          </button>
+        </form>
         </div>
       </section>
 

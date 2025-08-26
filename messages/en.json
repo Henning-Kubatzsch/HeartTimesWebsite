@@ -1,7 +1,7 @@
 
 {
   "Home": {
-    "nav": { "about": "About", "signup": "Sign up" },
+    "nav": { "about": "About", "signup": "Sign_up" },
     "hero": {
       "lead": "Self-organized gravel/MTB event. No commerce, no cops—just trails, sweat and good people. Queer · left · punk · renegade.",
       "cta": "Sign up",

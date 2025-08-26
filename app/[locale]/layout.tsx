@@ -1,26 +1,36 @@
 // app/[locale]/layout.tsx
 import '../globals.css';
+// NextIntlClientProvider: provides translated messages to React Tree; hasLocale: checks if locale is valid
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
+// 404 if language not listed
 import {notFound} from 'next/navigation';
+// single source of truth for languages/ prefixes/ slugs
 import {routing} from '@/i18n/routing';
+//setRequestLocale: sets the locale for the current request; getMessages: loads messages for selected language and uses i18n/request.ts 
 import {getMessages, setRequestLocale} from 'next-intl/server';
+// Next Links
 import Link from 'next/link';
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({locale}));
-}
 
-export default async function LocaleLayout({
-  children,
-  params
-}: LayoutProps<'/[locale]'>) {
-  const {locale} = await params;
-  if (!hasLocale(routing.locales, locale)) notFound();
+type Props = { 
+  children: React.ReactNode; 
+  params: Promise<{locale: string}>;
+}; 
 
-  // Für SSG: Locale in den Store setzen (verhindert Dynamic Rendering)
-  setRequestLocale(locale);
+// Tells Next: built with that language
+export function generateStaticParams() { 
+  return routing.locales.map((locale) => ({locale})); 
+} 
 
-  const messages = await getMessages();
+export default async function LocaleLayout({children, params}: Props) { 
+  const {locale} = await params; 
+  if (!hasLocale(routing.locales, locale)) 
+    notFound(); 
+  // Set locale for current request, so getMessages() knows which to load
+  setRequestLocale(locale); 
+  const messages = await getMessages(); 
+
+  // Button for switching locales, respecting 'as-needed' routing
 
   return (
     <html lang={locale}>

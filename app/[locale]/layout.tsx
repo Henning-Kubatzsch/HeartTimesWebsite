@@ -1,53 +1,87 @@
 // app/[locale]/layout.tsx
-import '../globals.css';
-// NextIntlClientProvider: provides translated messages to React Tree; hasLocale: checks if locale is valid
-import {NextIntlClientProvider, hasLocale} from 'next-intl';
-// 404 if language not listed
-import {notFound} from 'next/navigation';
-// single source of truth for languages/ prefixes/ slugs
-import {routing} from '@/i18n/routing';
-//setRequestLocale: sets the locale for the current request; getMessages: loads messages for selected language and uses i18n/request.ts 
-import {getMessages, setRequestLocale} from 'next-intl/server';
-// Next Links
-import Link from 'next/link';
+import "../globals.css";
+import {NextIntlClientProvider} from "next-intl";
+import {notFound} from "next/navigation";
+import {routing} from "@/i18n/routing";
+import {getMessages, setRequestLocale} from "next-intl/server";
+import NavBar from "./NavBar";
 
+type Props = {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+};
 
-type Props = { 
-  children: React.ReactNode; 
-  params: Promise<{locale: string}>;
-}; 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({locale}));
+}
 
-// Tells Next: built with that language
-export function generateStaticParams() { 
-  return routing.locales.map((locale) => ({locale})); 
-} 
+export default async function LocaleLayout({children, params}: Props) {
+  const {locale} = await params;
+  if (!(routing.locales as readonly string[]).includes(locale)) notFound();
 
-export default async function LocaleLayout({children, params}: Props) { 
-  const {locale} = await params; 
-  if (!hasLocale(routing.locales, locale)) 
-    notFound(); 
-  // Set locale for current request, so getMessages() knows which to load
-  setRequestLocale(locale); 
-  const messages = await getMessages(); 
-
-  // Button for switching locales, respecting 'as-needed' routing
+  setRequestLocale(locale);
+  const messages = await getMessages();
 
   return (
     <html lang={locale}>
       <body>
-        <header style={{display: 'flex', justifyContent: 'flex-end', gap: '1rem', padding: '1rem'}}>
-          {routing.locales.map((lng) =>
-            lng === locale ? null : (
-              <Link key={lng} href={`/${lng}`}>
-                <button>{lng.toUpperCase()}</button>
-              </Link>
-            )
-          )}
-        </header>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <NavBar />
           {children}
         </NextIntlClientProvider>
       </body>
     </html>
   );
 }
+
+/*
+
+// app/[locale]/layout.tsx
+import '../globals.css';
+import {NextIntlClientProvider} from 'next-intl';
+import {notFound} from 'next/navigation';
+import {routing} from '@/i18n/routing';
+import {getMessages, setRequestLocale} from 'next-intl/server';
+import {Link} from '@/i18n/navigation';
+
+type Props = {
+  children: React.ReactNode;
+  // In Next 15 sind params awaitable:
+  params: Promise<{ locale: string }>;
+};
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({locale}));
+}
+
+export default async function LocaleLayout({children, params}: Props) {
+  const {locale} = await params;
+
+  if (!(routing.locales as readonly string[]).includes(locale)) {
+    notFound();
+  }
+
+  // Für getMessages & Formatierung
+  setRequestLocale(locale);
+  const messages = await getMessages();
+
+  return (
+    <html lang={locale}>
+      <body>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <header style={{display:'flex', justifyContent:'flex-end', gap:'1rem', padding:'1rem'}}>
+            {routing.locales.map((lng) =>
+              lng === locale ? null : (
+                <Link key={lng} href="/" locale={lng} prefetch={false}>
+                  {lng.toUpperCase()}
+                </Link>
+              )
+            )}
+          </header>
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}
+*/

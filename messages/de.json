@@ -37,5 +37,46 @@
       "a4": "Kollektiv: queer · links · punk · renegade. DIY seit Tag eins."
     },
     "footer": { "contact": "Kontakt:" }
+  },
+
+  
+  "Register": {
+    "title": "Anmeldung",
+    "lead": "Hier findest du alle Infos zur Anmeldung.\n\nDu kannst auch unten auf der Startseite direkt das Formular nutzen.",
+    "backHome": "Zur Startseite",
+    "goToForm": "Zum Formular"
+  },
+
+  "PreviousEvent": {
+    "title": "Vergangenes Event",
+    "lead": "Ein kurzer Rückblick auf das letzte HEART TIMES Wochenende.\n\nBilder, Zahlen und die schönsten Momente - damit die Vorfreude wächst.",
+    "highlights": "Highlights",
+    "numbers": "Zahlen & Fakten",
+    "points": [
+      "Community-Feeling an jedem Checkpoint.",
+      "Keine Startgebühren - Spenden statt Zahlen.",
+      "No Drop, no Nazis, no Sexismus."
+    ],
+    "nums": [
+      "628 km · 6700 hm (Empfehlung: ≥ 40 mm Reifen)",
+      "7 Checkpoints · 75 h Limit",
+      "100 Startplätze · 50 reserviert für FLINTA*"
+    ],
+    "back": "Zur Startseite"
+  },
+
+  "Nav": {
+    "home": "Start",
+    "register": "Anmeldung",
+    "previousEvent": "Vergangenes Event",
+    "about": "About",
+    "signup": "Anmeldung"
   }
 }
+
+
+
+
+
+  
+

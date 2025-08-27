@@ -37,5 +37,40 @@
       "a4": "Collective: queer · left · punk · renegade. DIY since day one."
     },
     "footer": { "contact": "Contact:" }
+  },
+
+  
+  "Register": {
+    "title": "Registration",
+    "lead": "All information about registering.\n\nYou can also use the form on the homepage.",
+    "backHome": "Back to Home",
+    "goToForm": "Go to Form"
+  
+  },
+
+  "PreviousEvent": {
+    "title": "Previous Event",
+    "lead": "A quick look back at the last HEART TIMES weekend.\n\nPhotos, numbers and favorite moments - to fuel the stoke.",
+    "highlights": "Highlights",
+    "numbers": "Numbers & Facts",
+    "points": [
+      "Community vibes at every checkpoint.",
+      "No entry fees - donations instead.",
+      "No drop, no nazis, no sexism."
+    ],
+    "nums": [
+      "628 km · 6700 m (recommended: ≥ 40 mm tires)",
+      "7 checkpoints · 75 h limit",
+      "100 spots · 50 reserved for FLINTA*"
+    ],
+    "back": "Back to Home"
+  },
+
+  "Nav": {
+    "home": "Home",
+    "register": "Register",
+    "previousEvent": "Previous Event",
+    "about": "About",
+    "signup": "Sign up"
   }
 }

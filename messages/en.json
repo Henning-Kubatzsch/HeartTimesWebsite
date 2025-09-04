@@ -28,6 +28,29 @@
         "ten": "10 Commandments",
         "registrationRefund": "Registration & Refund"
       },
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "First Last"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "you@example.org"
+        },
+        "flinta": {
+          "label": "Self-identification",
+          "placeholder": "Please choose…",
+          "options": {
+            "flinta": "FLINTA*",
+            "notFlinta": "not FLINTA*",
+            "noSay": "prefer not to say"
+          }
+        },
+        "notes": {
+          "label": "Notes (optional)",
+          "placeholder": "e.g. allergies, bike, pronouns"
+        }
+      },
       "acknowledge": "I confirm that I have read the <Ten>10 Commandments</Ten> and the <RegRefund>Registration & Refund</RegRefund> page.",
       "submit": "Submit",
       "alerts": {

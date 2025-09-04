@@ -21,30 +21,76 @@ const GlitchText = ({ children, className = "" }: GlitchTextProps) => (
 );
 
 function PersonForm({ title, prefix }: { title: string; prefix: string }) {
+  const t = useTranslations("Home.signup.form");
+
   return (
     <fieldset className="border border-pink-600/40 rounded-2xl p-5">
       <legend className="px-2 text-pink-400 font-semibold tracking-wide">{title}</legend>
       <div className="grid sm:grid-cols-2 gap-4">
+        {/* Name */}
         <div>
-          <label htmlFor={`${prefix}-name`} className="block text-sm text-zinc-300 mb-1">Name</label>
-          <input id={`${prefix}-name`} name={`${prefix}-name`} type="text" required placeholder="Vorname Nachname" className="w-full px-3 py-2 rounded-xl bg-black border border-pink-600/40 focus:outline-none focus:ring-2 focus:ring-pink-600" />
+          <label htmlFor={`${prefix}-name`} className="block text-sm text-zinc-300 mb-1">
+            {t("name.label")}
+          </label>
+          <input
+            id={`${prefix}-name`}
+            name={`${prefix}-name`}
+            type="text"
+            required
+            placeholder={t("name.placeholder")}
+            className="w-full px-3 py-2 rounded-xl bg-black border border-pink-600/40 
+                       focus:outline-none focus:ring-2 focus:ring-pink-600"
+          />
         </div>
+
+        {/* Email */}
         <div>
-          <label htmlFor={`${prefix}-email`} className="block text-sm text-zinc-300 mb-1">E-Mail</label>
-          <input id={`${prefix}-email`} name={`${prefix}-email`} type="email" required placeholder="du@beispiel.org" className="w-full px-3 py-2 rounded-xl bg-black border border-pink-600/40 focus:outline-none focus:ring-2 focus:ring-pink-600" />
+          <label htmlFor={`${prefix}-email`} className="block text-sm text-zinc-300 mb-1">
+            {t("email.label")}
+          </label>
+          <input
+            id={`${prefix}-email`}
+            name={`${prefix}-email`}
+            type="email"
+            required
+            placeholder={t("email.placeholder")}
+            className="w-full px-3 py-2 rounded-xl bg-black border border-pink-600/40 
+                       focus:outline-none focus:ring-2 focus:ring-pink-600"
+          />
         </div>
+
+        {/* FLINTA Auswahl */}
         <div>
-          <label htmlFor={`${prefix}-flinta`} className="block text-sm text-zinc-300 mb-1">Selbsteinschätzung</label>
-          <select id={`${prefix}-flinta`} name={`${prefix}-flinta`} required className="w-full px-3 py-2 rounded-xl bg-black border border-pink-600/40 focus:outline-none focus:ring-2 focus:ring-pink-600">
-            <option value="">Bitte wählen…</option>
-            <option value="flinta">FLINTA*</option>
-            <option value="nicht-flinta">nicht FLINTA*</option>
-            <option value="sage-ich-nicht">möchte ich nicht sagen</option>
+          <label htmlFor={`${prefix}-flinta`} className="block text-sm text-zinc-300 mb-1">
+            {t("flinta.label")}
+          </label>
+          <select
+            id={`${prefix}-flinta`}
+            name={`${prefix}-flinta`}
+            required
+            className="w-full px-3 py-2 rounded-xl bg-black border border-pink-600/40 
+                       focus:outline-none focus:ring-2 focus:ring-pink-600"
+          >
+            <option value="">{t("flinta.placeholder")}</option>
+            <option value="flinta">{t("flinta.options.flinta")}</option>
+            <option value="nicht-flinta">{t("flinta.options.notFlinta")}</option>
+            <option value="sage-ich-nicht">{t("flinta.options.noSay")}</option>
           </select>
         </div>
+
+        {/* Hinweise */}
         <div>
-          <label htmlFor={`${prefix}-notes`} className="block text-sm text-zinc-300 mb-1">Hinweise (optional)</label>
-          <input id={`${prefix}-notes`} name={`${prefix}-notes`} type="text" placeholder="z. B. Allergien, Bike, Pronomen" className="w-full px-3 py-2 rounded-xl bg-black border border-pink-600/40 focus:outline-none focus:ring-2 focus:ring-pink-600" />
+          <label htmlFor={`${prefix}-notes`} className="block text-sm text-zinc-300 mb-1">
+            {t("notes.label")}
+          </label>
+          <input
+            id={`${prefix}-notes`}
+            name={`${prefix}-notes`}
+            type="text"
+            placeholder={t("notes.placeholder")}
+            className="w-full px-3 py-2 rounded-xl bg-black border border-pink-600/40 
+                       focus:outline-none focus:ring-2 focus:ring-pink-600"
+          />
         </div>
       </div>
     </fieldset>

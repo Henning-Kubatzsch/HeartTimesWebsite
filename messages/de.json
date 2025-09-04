@@ -19,15 +19,39 @@
       ]
     },
      "signup": {
-      "title": "Anmeldung",
-      "hint": "Trag dich ein – wir melden uns per E-Mail.",
-      "modes": { "solo": "Solo", "team": "Paar" },
-      "forms": { "solo": "Solo", "teamA": "Person A", "teamB": "Person B" },
-      "readMore": "Mehr Infos:",
-      "links": {
-        "ten": "10 Gebote",
-        "registrationRefund": "Anmeldung & Rückerstattung"
-      },
+        "title": "Anmeldung",
+        "hint": "Trag dich ein – wir melden uns per E-Mail.",
+        "modes": { "solo": "Solo", "team": "Paar" },
+        "forms": { "solo": "Solo", "teamA": "Person A", "teamB": "Person B" },
+        "readMore": "Mehr Infos:",
+        "links": {
+          "ten": "10 Gebote",
+          "registrationRefund": "Anmeldung & Rückerstattung"
+        },
+        "form": {
+          "name": {
+            "label": "Name",
+            "placeholder": "Vorname Nachname"
+          },
+          "email": {
+            "label": "E-Mail",
+            "placeholder": "du@beispiel.org"
+          },
+          "flinta": {
+            "label": "Selbsteinschätzung",
+            "placeholder": "Bitte wählen…",
+            "options": {
+              "flinta": "FLINTA*",
+              "notFlinta": "nicht FLINTA*",
+              "noSay": "möchte ich nicht sagen"
+            }
+          },
+          "notes": {
+            "label": "Hinweise (optional)",
+            "placeholder": "z. B. Allergien, Bike, Pronomen"
+          }
+        },
+
       "acknowledge": "Ich bestätige, die <Ten>10 Gebote</Ten> sowie <RegRefund>Anmeldung & Rückerstattung</RegRefund> gelesen zu haben.",
       "submit": "Anmelden",
       "alerts": {

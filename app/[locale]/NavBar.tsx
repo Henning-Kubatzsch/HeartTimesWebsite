@@ -7,7 +7,7 @@ import {Link, getPathname, usePathname} from "@/i18n/navigation";
 import {routing} from "@/i18n/routing";
 
 export default function NavBar() {
-  const tNav = useTranslations("Nav");          // Keys: home, register, previousEvent, about, signup
+  const tNav = useTranslations("Nav");          // Keys: home, registration_refund, previousEvent, about, signup
   const locale = useLocale();
   const pathname = usePathname();
   const home = getPathname({ href: "/", locale });
@@ -116,11 +116,19 @@ export default function NavBar() {
                 {tNav("home")}
               </Link>
               <Link
-                href="/register"
+                href="/10commandments"
+                className="px-3 py-2 rounded hover:bg-pink-600/20 focus:outline-none focus:ring-2 focus:ring-pink-600"
+                onClick={() => setOpen(false)}
+                ref={firstLinkRef}
+              >
+                {tNav("10commandments")}
+              </Link>
+              <Link
+                href="/registration_refund"
                 className="px-3 py-2 rounded hover:bg-pink-600/20 focus:outline-none focus:ring-2 focus:ring-pink-600"
                 onClick={() => setOpen(false)}
               >
-                {tNav("register")}
+                {tNav("registration_refund")}
               </Link>
               <Link
                 href="/previousEvent"
@@ -131,6 +139,7 @@ export default function NavBar() {
               </Link>
 
               {/* Anker auf Startseite */}
+              {/*
               <a
                 href={`${home}#about`}
                 className="px-3 py-2 rounded hover:bg-pink-600/20 focus:outline-none focus:ring-2 focus:ring-pink-600"
@@ -138,13 +147,18 @@ export default function NavBar() {
               >
                 {tNav("about")}
               </a>
+              */}
+              
+              {/*
               <a
-                href={`${home}#signup`}
+                href="/10commandments"
                 className="px-3 py-2 rounded hover:bg-pink-600/20 focus:outline-none focus:ring-2 focus:ring-pink-600"
                 onClick={() => setOpen(false)}
               >
-                {tNav("signup")}
+                {tNav("10commandments")}
               </a>
+              */}
+              
 
               {/* Sprachumschalter */}
               <LangSwitch />

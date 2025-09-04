@@ -8,7 +8,7 @@
       "more": "Learn more"
     },
     "about": {
-      "title": "all cyclists are beautiful",
+      "title": "# all cyclists are beautiful",
       "body": "HEART TIMES is a DIY ride, not a race. We share GPX routes, refill spots and a meetup point. You are responsible for your safety, your bike and your crew. Respect the forest, fields and people. No drop, no Nazis, no sexism.",
       "body1": "Heppy hello at Heart Times! Your self-supported bikepacking adventure from the community for the community- no profit, no Schnickschnack. Grab your favourite bike and get outa there - head off, body on! Butter your sandwiches and lube the chain, put your favourite cassette in the Walkman and some brisk knickers in your bag! Don't forget your toothbrush! \n\nThe route will take you over gravel, tarmac and wild forest paths, across national borders and your own, from Dresden to Dresden, always following your heart. \n\nA varied 628 kilometres with 6700 metres of elevation are waiting for you. You will pass 7 checkpoints and each one is worth a stop! \n\nArrive back with us within 75 hours. You and 99 other Pedalpeepz will set off together. 50 places are reserved for FLINTA*. \n\nBring your boots! (min. 40mm tyre width recommended) \n\nDo you feel that tingling in your legs? Get ready!\n\nIt will be exhausting - but we can do it!",
       "points": [
@@ -68,9 +68,106 @@
 
   "Nav": {
     "home": "Home",
-    "register": "Register",
+    "registration_refund": "Registration and Refund",
     "previousEvent": "Previous Event",
     "about": "About",
-    "signup": "Sign up"
+    "signup": "Sign up",
+    "10commandments": "10 Commandments"
+  },
+
+   "10commandments": {
+    "title": "10 Commandments",
+    "back": "Back to Home",
+    "rules": {
+      "1": {
+        "title": "1 - WE LEAVE NO TRACES BEHIND",
+        "text": "You will ride through sensitive ecosystems and protected areas. Take all garbage with you and leave nature as it is."
+      },
+      "2": {
+        "title": "2 - WE RIDE SAFELY AND RESPONSIBLY",
+        "text": "You ride on public roads. Always know and observe the local laws. Helmet, front and rear lights are mandatory. A reflective vest is mandatory at night. We recommend light-colored clothing to be more visible while riding."
+      },
+      "3": {
+        "title": "3 - WE RIDE UNDER OUR OWN POWER",
+        "text": "It's all about you and your bike. There are two categories: Solo and Pairs. Riding in groups with other participants is prohibited. Riding in the slipstream to gain an aerodynamic advantage is also not permitted. This rule does not apply during the start or for participants in the pairs category. If for any reason you are riding at the same speed as another rider, you must ride side by side instead of directly behind each other."
+      },
+      "4": {
+        "title": "4 - WE ARE SELF-SUFFICIENT",
+        "text": "Food, drinks and luggage must be carried by yourself or procured unplanned along the way. You are responsible for your own safety and logistics. Booking accommodation or logistical support before the race is not permitted. Support crews or virtual base camps are prohibited, but unexpected and unsolicited help along the way is allowed. A pair counts as one person. All resources can be shared, but external help is not allowed. It is strongly recommended that you bring a bivy sack, first aid kit and sunscreen, as well as electrolytes and weatherproof clothing."
+      },
+      "5": {
+        "title": "5 - WE FOLLOW THE PATH",
+        "text": "You must follow the official route and complete it in full. If this is not possible at any time for unexpected and justifiable reasons, find your way and return to the course as soon as you can. You may leave the route temporarily (to find food, rest, etc.), but you must return to the same point where you left the route to continue the ride. In the event of a medical or mechanical emergency, use any means of transportation you need and return to the exact point to continue the ride. The organization will send you the manual and route files 4 weeks before the start. You should study them thoroughly and prepare your own strategy."
+      },
+      "6": {
+        "title": "6 - WE CHECK THE TRACKER",
+        "text": "Satellite tracking is only used to track riders online; you are fully responsible for its correct use. Turning off the tracker or long periods of inactivity without reporting to the organization will result in penalties. If a pair rides separately for any reason, the person riding last must carry the tracker. A deposit is required for each tracker against loss or damage."
+      },
+      "7": {
+        "title": "7 - WE ARE ON TIME",
+        "text": "You must be on time for registration, the briefing and the start. If you do not finish the course before the 75h deadline, you will be classified as DNF (Did Not Finish). After the deadline, no official services or support will be available, but you can continue your ride. Return the tracker to us by 7pm on Sunday evening. If one person in the pair drops out, the pair will be classified as DNF. However, the remaining person can continue and cross the finish line as a finisher (Out of Category)."
+      },
+      "8": {
+        "title": "8 - WE KEEP OURSELVES SAFE",
+        "text": "You must take out valid liability, death, accident and health insurance for the race, which also covers emergency rescue and repatriation. All liability lies with you. The organization does not provide insurance for the ride and assumes no liability for damages that you or others may incur directly or indirectly."
+      },
+      "9": {
+        "title": "9 - WE RESPECT THE TEAM",
+        "text": "Heart Times is made possible by the commitment of our team, volunteers, sponsors and institutions. Please be kind to them; everyone has worked hard to make this event possible. Follow the team's instructions; they are for your safety and the smooth running of the ride."
+      },
+      "10": {
+        "title": "10 - WE ARE HONEST",
+        "text": "The organization can impose time penalties for rule violations after the race. Ideally, however, this should not be necessary. When we are asked how we ensure that riders abide by the rules, there is only one answer: we can't do it without you. Fair behavior is essential for every bikepacking adventure."
+      }
+    }
+  },
+
+  "Registration_Refund": {
+    "title": "Registration & Refund",
+    "backHome": "Back to Home",
+    "goToForm": "Go to Registration",
+    "lead": "You want to register for Heart Times 2025 – good idea! All you need to know in advance.",
+    "sections": {
+      "window": {
+        "title": "Registration Window",
+        "text": "Our registration will open on Oct 16th 2024 and you will be able to register until Apr 21st 2025."
+      },
+      "capacity": {
+        "title": "Start Places & FLINTA*",
+        "text": "There will be a total of 100 start places, 50 of which will be reserved for FLINTA* until Feb 28th 2025.\nIf after Feb 28th 2025 not all FLINTA* places are reserved, the registration will be opened again for everyone.\nUntil then, the waiting list principle will apply.\nIn our preparations, we have tried to make this race inexpensive so that as many people as possible can participate – but it is not possible without a contribution."
+      },
+      "fees": {
+        "title": "Entry Fees",
+        "solo": { "label": "Solo", "price": "€85.00" },
+        "pair": { "label": "Pair", "price": "€150.00" },
+        "note": "Payment can only be made via PayPal."
+      },
+      "payment": {
+        "title": "Payment & Donation",
+        "text": "If there is a surplus at the end, everything will be donated to worldbicyclerelief.org – an organization that gives people in need access to your favorite way of transportation too!"
+      },
+      "donation": {
+        "text": ""
+      },
+      "refund": {
+        "title": "Refund Policy",
+        "intro": "Our flexible refund policy allows you to cancel with respect for our work.",
+        "rules": {
+          "r1": "Refund until Dec 31st 2024: 70% of the registration fee",
+          "r2": "Refund from Jan 1st 2025 to Feb 28th 2025: 50% of the registration fee",
+          "r3": "After Mar 1st 2025 no refund possible"
+        }
+      },
+      "postpone": {
+        "title": "Event Postponement",
+        "text": "We do our best to make Heart Times 2025 a great experience for everyone, but we cannot predict the future.\nShould the race not take place due to COVID-19 restrictions, natural disasters, legal restrictions, lockdowns or other unforeseeable reasons, we will postpone the event. In this case all participants will keep their place in the race."
+      },
+      "abort": {
+        "title": "Cancellation After Start",
+        "text": "If we have to cancel or adjust the race after the start due to bad track conditions, bad weather, serious accidents or other reasons, no refund can be given."
+      }
+    }
   }
+
+
 }

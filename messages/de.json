@@ -66,12 +66,109 @@
   },
 
   "Nav": {
-    "home": "Start",
-    "register": "Anmeldung",
+    "home": "Startseite",
+    "registration_refund": "Anmeldung und Rückerstattung",
     "previousEvent": "Vergangenes Event",
     "about": "About",
-    "signup": "Anmeldung"
-  }
+    "signup": "Anmeldung",
+    "10commandments": "10 Gebote"
+  },
+
+  "10commandments": {
+    "title": "10 Gebote",
+    "back": "Zurück zur Hauptseite",
+    "rules": {
+      "1": {
+        "title": "1 - WIR HINTERLASSEN KEINE SPUREN",
+        "text": "Du wirst durch empfindliche Ökosysteme und Schutzgebiete fahren. Nimm allen Müll mit und belasse die Natur unverändert."
+      },
+      "2": {
+        "title": "2 - WIR FAHREN SICHER UND VERANTWORTUNGSBEWUSST",
+        "text": "Du fährst auf öffentlichen Wegen. Kenne und beachte immer die örtlichen Gesetze. Helm, sowie Vorder- und Rücklicht sind Pflicht. Nachts ist eine reflektierende Weste vorgeschrieben. Wir empfehlen helle Kleidung, um während der Fahrt besser sichtbar zu sein."
+      },
+      "3": {
+        "title": "3 - WIR FAHREN AUS EIGENER KRAFT",
+        "text": "Es geht nur um dich und dein Fahrrad. Es gibt zwei Kategorien: Solo und Paare. Das Fahren in Gruppen mit anderen Teilnehmenden ist untersagt. Das Fahren im Windschatten, um einen aerodynamischen Vorteil zu erlangen, ist ebenfalls nicht erlaubt. Diese Regel gilt nicht während des Starts oder für Teilnehmende der Paarkategorie. Solltest du aus irgendeinem Grund im gleichen Tempo wie ein/e andere/r Fahrer/in unterwegs sein, müsst ihr nebeneinander fahren, anstatt direkt hintereinander."
+      },
+      "4": {
+        "title": "4 - WIR SIND SELBSTVERSORGEND",
+        "text": "Essen, Getränke und Gepäck müssen von dir selbst getragen oder unterwegs ungeplant beschafft werden. Du bist für deine eigene Sicherheit und Logistik verantwortlich. Das Buchen von Unterkünften oder logistischer Unterstützung vor dem Rennen ist nicht erlaubt. Unterstützungscrews oder virtuelle Basiscamps sind verboten, aber unerwartete und unaufgeforderte Hilfe unterwegs ist erlaubt. Ein Paar gilt als eine Person. Es können alle Ressourcen untereinander geteilt werden, aber externe Hilfe ist nicht erlaubt. Es wird dringend empfohlen, einen Biwaksack, ein Erste-Hilfe-Set und Sonnencreme, sowie Elektrolyte und wetterfeste Kleidung mitzubringen."
+      },
+      "5": {
+        "title": "5 - WIR FOLGEN DEM WEG",
+        "text": "Du musst der offiziellen Strecke folgen und sie vollständig absolvieren. Wenn dies aus unerwarteten und gerechtfertigten Gründen zu irgendeinem Zeitpunkt nicht möglich ist, finde deinen Weg und kehre zur Strecke zurück, sobald es möglich ist. Du kannst die Strecke vorübergehend verlassen (um Verpflegung zu finden, zu rasten o.ä.), musst aber an den gleichen Punkt zurückkehren, an dem du die Strecke verlassen hast, um die Fahrt fortzusetzen. Im Falle eines medizinischen oder mechanischen Notfalls nutze jegliche Transportmittel, die du benötigst, und kehre zum genauen Punkt zurück, um die Fahrt fortzusetzen. Die Organisation wird dir 4 Wochen vor dem Start das Strecken-Handbuch und 5 Tage vor dem Start die Streckendateien zusenden. Du solltest dich damit gründlich beschäftigen und deine eigene Strategie vorbereiten."
+      },
+      "6": {
+        "title": "6 - WIR CHECKEN DEN TRACKER",
+        "text": "Satellitenverfolgung dient dazu, die Fahrenden online zu verfolgen; Du bist selbst für die korrekte Nutzung des Trackers verantwortlich. Das Ausschalten des Trackers oder lange Inaktivitätszeiten ohne Meldung an die Organisation führen zu Zeitstrafen. Wenn ein Paar aus irgendeinem Grund getrennt fährt, muss die hinten fahrende Person den Tracker tragen. Für jeden Tracker wird bei Verlust oder Beschädigung eine Gebühr fällig."
+      },
+      "7": {
+        "title": "7 - WIR SIND PÜNKTLICH",
+        "text": "Du musst pünktlich bei der Anmeldung, zum Briefing und zum Start sein. Falls du die Strecke nicht vor Ablauf der Frist von 75h beendest, wirst du als DNF (Did Not Finish) gewertet. Nach Ablauf der Cutoff-Time stehen keine offiziellen Dienste oder Unterstützung mehr zur Verfügung, aber du kannst deine Fahrt fortsetzen. Gib den Tracker bis Sonntag Abend 19 Uhr bei uns wieder ab. Wenn im Paar eine Person ausfällt, wird das Paar als DNF gewertet. Die verbleibende Person kann jedoch weiterfahren und als Finisher (außerhalb der Wertung) durchs Ziel rollen."
+      },
+      "8": {
+        "title": "8 - WIR SIND SELBST SICHER",
+        "text": "Du musst eine gültige Haftpflicht-, Kranken- und Auslandskrankenversicherung für das Rennen abschließen, die auch eine Notfall-Rettung und Rückführung abdeckt. Alle Haftungen liegen bei dir. Die Organisation stellt keine Versicherung für die Fahrt bereit und übernimmt keine Haftung für Schäden, die dir oder anderen direkt oder indirekt entstehen könnten."
+      },
+      "9": {
+        "title": "9 - WIR RESPEKTIEREN DAS TEAM",
+        "text": "Heart Times wird durch das Engagement unseres Teams, der Supportenden und Sponsor*innen und Institutionen möglich gemacht. Bitte sei nett zu ihnen; alle haben heart gearbeitet, um dieses Event möglich zu machen. Folge den Anweisungen des Teams; sie dienen deiner Sicherheit und einem reibungslosen Ablauf der Fahrt."
+      },
+      "10": {
+        "title": "10 - WIR SIND EHRLICH",
+        "text": "Die Organisation kann nach dem Rennen Zeitstrafen für Regelverstöße verhängen. Dies sollte jedoch idealerweise nicht nötig sein. Werden wir gefragt, wie wir sicherstellen, dass die Fahrenden die Regeln einhalten, gibt es nur eine Antwort: Geht nicht ohne Dich. Faires Verhalten ist wesentlich für jedes Bikepacking-Abenteuer."
+      }
+    }
+  },
+
+  "Registration_Refund": {
+      "title": "Anmeldung & Rückerstattung",
+      "backHome": "Zurück zur Hauptseite",
+      "goToForm": "Zur Anmeldung",
+      "lead": "Du möchtest Dich anmelden für Heart Times 2025 – gute Idee! Vorab alles Wissenswerte für dich.",
+      "sections": {
+        "window": {
+          "title": "Registrierungszeitraum",
+          "text": "Am 16.10.2024 öffnet unsere Registrierung und es ist dir bis einschließlich 21.04.2025 möglich, dich bei uns anzumelden."
+        },
+        "capacity": {
+          "title": "Startplätze & FLINTA*",
+          "text": "Es wird insgesamt 100 Startplätze geben, wovon wir 50 Plätze reservieren für FLINTA* bis einschließlich 28.02.2025.\nSollten nach dem 28.02.2025 nicht alle FLINTA*-Startplätze vergeben sein, wird die Anmeldung wieder für alle geöffnet.\nBis dahin gilt das Prinzip der Warteliste.\nWir haben in unseren Vorbereitungen versucht, dieses Rennen kostengünstig zu gestalten, um vielen Menschen Teilhabe zu ermöglichen – aber ganz ohne Unkostenbeitrag geht es nicht."
+        },
+        "fees": {
+          "title": "Teilnahmegebühren",
+          "solo": { "label": "Solo", "price": "85,00 €" },
+          "pair": { "label": "Paar", "price": "150,00 €" },
+          "note": "Die Bezahlung kann ausschließlich über PayPal erfolgen."
+        },
+        "payment": {
+          "title": "Zahlung & Spende",
+          "text": "Sollte es am Ende zu Überschüssen kommen, wird alles gespendet an worldbicyclerelief.org – eine Organisation, welche Menschen den Zugang zu deinem Lieblingsgefährt ermöglicht!"
+        },
+        "donation": {
+          "text": ""
+        },
+        "refund": {
+          "title": "Refund Policy",
+          "intro": "Unsere flexible Refund Policy ermöglicht es dir, mit Rücksicht auf unsere Arbeit, dich auch wieder abzumelden.",
+          "rules": {
+            "r1": "Rückerstattung bis 31.12.2024: 70% der Teilnahmegebühr",
+            "r2": "Rückerstattung ab 01.01.2025 bis 28.02.2025: 50% der Teilnahmegebühr",
+            "r3": "Ab dem 01.03.2025 ist keine Rückerstattung mehr möglich"
+          }
+        },
+        "postpone": {
+          "title": "Verschiebung des Events",
+          "text": "Wir geben uns die größte Mühe, Heart Times 2025 für alle zu einem tollen Erlebnis werden zu lassen, aber auch wir können die Zukunft nicht vorhersagen.\nSollte das Rennen aufgrund von COVID-19-Einschränkungen, Naturkatastrophen, rechtlichen Beschränkungen, Lockdowns oder anderen unvorhersehbaren Gründen nicht stattfinden können, werden wir das Event verschieben. In diesem Fall behalten alle Angemeldeten ihren Startplatz."
+        },
+        "abort": {
+          "title": "Abbruch nach dem Start",
+          "text": "Müssen wir das Rennen nach dem Start aufgrund von schlechten Streckenbedingungen, Unwettern, schweren Unfällen oder anderen Gründen abbrechen oder die Strecke anpassen, kann keine Rückerstattung erfolgen."
+        }
+      }
+    }
+
+
 }
 
 

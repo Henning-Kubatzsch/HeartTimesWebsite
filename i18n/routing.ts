@@ -7,7 +7,8 @@ export const routing = defineRouting({
   localePrefix: 'as-needed',
   pathnames: {
     '/': '/',
-    '/register': '/register',
-    '/previousEvent': '/previousEvent'
+    '/registration_refund': '/registration_refund',
+    '/previousEvent': '/previousEvent',
+    '/10commandments': '/10commandments'
   }
 });

@@ -8,16 +8,10 @@ type GlitchTextProps = { children: ReactNode; className?: string };
 const GlitchText = ({ children, className = "" }: GlitchTextProps) => (
   <div className={`relative inline-block font-salted ${className}`}>
     <span className="relative z-10">{children}</span>
-    <span
-      className="absolute inset-0 -z-0 translate-x-[2px] translate-y-[2px] text-fuchsia-500 blur-[0.5px] select-none"
-      aria-hidden
-    >
+    <span className="absolute inset-0 -z-0 translate-x-[2px] translate-y-[2px] text-fuchsia-500 blur-[0.5px] select-none" aria-hidden>
       {children}
     </span>
-    <span
-      className="absolute inset-0 -z-0 -translate-x-[2px] -translate-y-[2px] text-white blur-[0.5px] select-none"
-      aria-hidden
-    >
+    <span className="absolute inset-0 -z-0 -translate-x-[2px] -translate-y-[2px] text-white blur-[0.5px] select-none" aria-hidden>
       {children}
     </span>
   </div>
@@ -33,8 +27,18 @@ export default async function TenCommandmentsPage() {
 
   return (
     <main className="min-h-screen">
-      {/* Hero: 2/3 Höhe, heller, Titel mittig */}
-      <section className="relative h-[66vh] bg-[url('/Meta/bengalo.png')] bg-fixed bg-cover bg-center">
+      {/* Hero: mobile stabil, Parallax erst ab md */}
+      <section
+        className="
+          relative 
+          h-[66svh] md:h-[66vh]
+          bg-[url('/Meta/bengalo.png')]
+          bg-cover
+          bg-[position:50%_35%] sm:bg-[position:50%_45%] md:bg-center
+          bg-no-repeat
+          bg-scroll md:bg-fixed
+        "
+      >
         {/* helleres Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40" />
         {/* Titel mittig */}

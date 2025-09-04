@@ -8,16 +8,10 @@ type GlitchTextProps = { children: ReactNode; className?: string };
 const GlitchText = ({ children, className = "" }: GlitchTextProps) => (
   <div className={`relative inline-block font-salted ${className}`}>
     <span className="relative z-10">{children}</span>
-    <span
-      className="absolute inset-0 -z-0 translate-x-[2px] translate-y-[2px] text-fuchsia-500 blur-[0.5px] select-none"
-      aria-hidden
-    >
+    <span className="absolute inset-0 -z-0 translate-x-[2px] translate-y-[2px] text-fuchsia-500 blur-[0.5px] select-none" aria-hidden>
       {children}
     </span>
-    <span
-      className="absolute inset-0 -z-0 -translate-x-[2px] -translate-y-[2px] text-white blur-[0.5px] select-none"
-      aria-hidden
-    >
+    <span className="absolute inset-0 -z-0 -translate-x-[2px] -translate-y-[2px] text-white blur-[0.5px] select-none" aria-hidden>
       {children}
     </span>
   </div>
@@ -33,8 +27,18 @@ export default async function RegisterPage() {
 
   return (
     <main className="min-h-screen text-zinc-200">
-      {/* Hero im gleichen Stil */}
-      <section className="relative h-[66vh] bg-[url('/Meta/feets_bikes.png')] bg-fixed bg-cover bg-center">
+      {/* Hero: mobile stabil, Parallax erst ab md */}
+      <section
+        className="
+          relative
+          h-[66svh] md:h-[66vh]
+          bg-[url('/Meta/feets_bikes.png')]
+          bg-cover
+          bg-[position:50%_35%] sm:bg-[position:50%_45%] md:bg-center
+          bg-no-repeat
+          bg-scroll md:bg-fixed
+        "
+      >
         {/* helleres Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40" />
         {/* Titel mittig */}
@@ -112,10 +116,7 @@ export default async function RegisterPage() {
 
         {/* CTA buttons */}
         <div className="mt-10 flex flex-wrap gap-3">
-          <Link
-            href="/"
-            className="px-5 py-3 rounded-2xl border border-pink-600 hover:bg-pink-600/10"
-          >
+          <Link href="/" className="px-5 py-3 rounded-2xl border border-pink-600 hover:bg-pink-600/10">
             {t('backHome')}
           </Link>
         </div>

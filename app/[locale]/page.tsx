@@ -3,6 +3,7 @@
 import {useState, ReactNode} from "react";
 import Image from "next/image";
 import {useTranslations, useLocale} from "next-intl";
+import { useEffect } from "react";
 
 
 // ---------- UI Bits ----------
@@ -93,6 +94,72 @@ function GridNoise() {
   );
 }
 
+function AckWithLinks({ locale }: { locale: string }) {
+  const [checked, setChecked] = useState(false);
+  const t = useTranslations('Home'); // gleicher Namespace wie oben
+
+  useEffect(() => {
+    const ev = new CustomEvent('ack-change', { detail: checked });
+    window.dispatchEvent(ev);
+  }, [checked]);
+
+  return (
+    <div className="flex items-start gap-3 text-sm">
+      <input
+        id="ack-terms"
+        name="ack-terms"
+        type="checkbox"
+        required
+        checked={checked}
+        onChange={(e) => setChecked(e.target.checked)}
+        className="mt-1 accent-pink-600"
+      />
+      <label htmlFor="ack-terms" className="text-zinc-300">
+        {t.rich('signup.acknowledge', {
+          Ten: (chunks) => (
+            <a href={`/${locale}/10commandments`} className="underline hover:text-pink-400">
+              {chunks}
+            </a>
+          ),
+          RegRefund: (chunks) => (
+            <a href={`/${locale}/registration_refund`} className="underline hover:text-pink-400">
+              {chunks}
+            </a>
+          )
+        })}
+      </label>
+    </div>
+  );
+}
+
+
+function SubmitWithGuard({ label }: { label: string }) {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const onAck = (e: Event) => {
+      const detail = (e as CustomEvent<boolean>).detail;
+      setEnabled(Boolean(detail));
+    };
+    window.addEventListener('ack-change', onAck);
+    return () => window.removeEventListener('ack-change', onAck);
+  }, []);
+
+  return (
+    <button
+      type="submit"
+      disabled={!enabled}
+      className={`self-start inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-semibold transition
+        ${enabled ? 'bg-pink-600 hover:bg-pink-500' : 'bg-zinc-700/60 cursor-not-allowed opacity-60'}
+      `}
+      aria-disabled={!enabled}
+    >
+      {label}
+    </button>
+  );
+}
+
+
 // ---------- Page ----------
 export default function HeartTimesSite() {
   const t = useTranslations('Home');
@@ -117,7 +184,6 @@ export default function HeartTimesSite() {
         </div>
       </header>
       */}
-
        
 
       {/* Hero */}
@@ -196,88 +262,101 @@ export default function HeartTimesSite() {
           {/* Mode Toggle */}
           <div className="inline-flex rounded-2xl border border-pink-600/40 overflow-hidden mb-8">
             <button
-              onClick={() => setMode("solo")}
-              className={`px-5 py-3 font-semibold ${mode === "solo" ? "bg-pink-600" : "bg-transparent hover:bg-pink-600/10"}`}
-              aria-pressed={mode === "solo"}
+              onClick={() => setMode('solo')}
+              className={`px-5 py-3 font-semibold ${mode === 'solo' ? 'bg-pink-600' : 'bg-transparent hover:bg-pink-600/10'}`}
+              aria-pressed={mode === 'solo'}
             >
               {t('signup.modes.solo')}
             </button>
             <button
-              onClick={() => setMode("team")}
-              className={`px-5 py-3 font-semibold ${mode === "team" ? "bg-pink-600" : "bg-transparent hover:bg-pink-600/10"}`}
-              aria-pressed={mode === "team"}
+              onClick={() => setMode('team')}
+              className={`px-5 py-3 font-semibold ${mode === 'team' ? 'bg-pink-600' : 'bg-transparent hover:bg-pink-600/10'}`}
+              aria-pressed={mode === 'team'}
             >
               {t('signup.modes.team')}
             </button>
           </div>
 
-          <form onSubmit={async (e) => {
-            e.preventDefault();
-            const form = e.currentTarget as HTMLFormElement;
-            const fd = new FormData(form);
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.currentTarget as HTMLFormElement;
+              const fd = new FormData(form);
 
-            // helper: FormData -> Entry
-            const entry = (p: string) => ({
-              name: String(fd.get(`${p}-name`) || '').trim(),
-              email: String(fd.get(`${p}-email`) || '').trim(),
-              self: String(fd.get(`${p}-flinta`) || '').trim(), // 'flinta' | 'nicht-flinta' | 'sage-ich-nicht'
-              notes: String(fd.get(`${p}-notes`) || '').trim() || undefined
-            });
-
-            // payload bauen
-            const payload =
-              mode === 'solo'
-                ? { mode: 'solo' as const, locale, entries: [entry('solo')] }
-                : { mode: 'team' as const, locale, entries: [entry('a'), entry('b')] };
-
-            // mini-validierung
-            if (payload.entries.some(r => !r.name || !r.email)) {
-              alert('Bitte Name und E-Mail ausfüllen.');
-              return;
-            }
-
-            try {
-              const res = await fetch('/api/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+              const entry = (p: string) => ({
+                name: String(fd.get(`${p}-name`) || '').trim(),
+                email: String(fd.get(`${p}-email`) || '').trim(),
+                self: String(fd.get(`${p}-flinta`) || '').trim(),
+                notes: String(fd.get(`${p}-notes`) || '').trim() || undefined
               });
-              const data = await res.json();
 
-              if (res.ok && data?.ok) {
-                alert('Danke! Wir melden uns per Mail.');
-                form.reset();
-                setMode('solo'); // zurücksetzen, optional
-              } else {
-                alert(`Fehler: ${data?.error ?? 'Unbekannter Fehler'}`);
+              const payload =
+                mode === 'solo'
+                  ? { mode: 'solo' as const, locale, entries: [entry('solo')] }
+                  : { mode: 'team' as const, locale, entries: [entry('a'), entry('b')] };
+
+              if (payload.entries.some(r => !r.name || !r.email)) {
+                alert(t('signup.alerts.missingFields'));
+                return;
               }
-            } catch {
-              alert('Netzwerkfehler. Versuch es später nochmal.');
-            }
-          }}
-          className="grid gap-8">        
-          {mode === 'solo' ? (
-            <PersonForm title={t('signup.forms.solo')} prefix="solo" />
-          ) : (
-            <div className="grid md:grid-cols-2 gap-8">
-              <PersonForm title={t('signup.forms.teamA')} prefix="a" />
-              <PersonForm title={t('signup.forms.teamB')} prefix="b" />
-            </div>
-          )}
 
-          <div className="flex items-start gap-3 text-sm">
-            <input id="terms" type="checkbox" required className="mt-1 accent-pink-600" />
-            <label htmlFor="terms" className="text-zinc-300">
-              {t('signup.terms')}
-            </label>
+              const agree = (fd.get('ack-terms') as string) === 'on';
+              if (!agree) {
+                alert(t('signup.alerts.mustAcknowledge'));
+                return;
+              }
+
+              try {
+                const res = await fetch('/api/register', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (res.ok && data?.ok) {
+                  alert(t('signup.alerts.success'));
+                  form.reset();
+                  setMode('solo');
+                } else {
+                  alert(`${t('signup.alerts.error')}: ${data?.error ?? t('signup.alerts.unknown')}`);
+                }
+              } catch {
+                alert(t('signup.alerts.network'));
+              }
+            }}
+            className="grid gap-8"
+          >
+            {mode === 'solo' ? (
+              <PersonForm title={t('signup.forms.solo')} prefix="solo" />
+            ) : (
+              <div className="grid md:grid-cols-2 gap-8">
+                <PersonForm title={t('signup.forms.teamA')} prefix="a" />
+                <PersonForm title={t('signup.forms.teamB')} prefix="b" />
+              </div>
+            )}
+
+            {/* Pflicht-Bestätigung mit Links */}
+            <AckWithLinks locale={locale} />
+
+            {/* Submit-Button mit Guard */}
+            <SubmitWithGuard label={t('signup.submit')} />
+          </form>
+
+          {/* Zusatzlinks unter dem Formular */}
+          <div className="mt-6 text-sm text-zinc-300">
+            <span className="opacity-80">{t('signup.readMore')}</span>{' '}
+            <a href={`/${locale}/10commandments`} className="underline hover:text-pink-400">
+              {t('signup.links.ten')}
+            </a>{' '}
+            ·{' '}
+            <a href={`/${locale}/registration_refund`} className="underline hover:text-pink-400">
+              {t('signup.links.registrationRefund')}
+            </a>
           </div>
-
-          <button type="submit" className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-pink-600 hover:bg-pink-500 font-semibold">
-            {t('signup.submit')}
-          </button>
-        </form>
         </div>
       </section>
+
 
       {/* FAQ */}
       <section id="faq" className="max-w-5xl mx-auto px-4 py-16">

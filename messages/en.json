@@ -19,12 +19,25 @@
       ]
     },
     "signup": {
-      "title": "Sign up",
-      "hint": "Choose Solo or Team. Team shows two forms.",
-      "modes": { "solo": "Solo", "team": "Team" },
-      "forms": { "solo": "Solo", "teamA": "Team · Rider A", "teamB": "Team · Rider B" },
-      "terms": "Acknowledged: personal responsibility, trail etiquette, respect. No liability assumed.",
-      "submit": "Send"
+      "title": "Sign Up",
+      "hint": "Enter your details – we’ll get back to you via email.",
+      "modes": { "solo": "Solo", "team": "Pair" },
+      "forms": { "solo": "Solo", "teamA": "Person A", "teamB": "Person B" },
+      "readMore": "More info:",
+      "links": {
+        "ten": "10 Commandments",
+        "registrationRefund": "Registration & Refund"
+      },
+      "acknowledge": "I confirm that I have read the <Ten>10 Commandments</Ten> and the <RegRefund>Registration & Refund</RegRefund> page.",
+      "submit": "Submit",
+      "alerts": {
+        "missingFields": "Please fill in name and email.",
+        "mustAcknowledge": "Please confirm you have read both pages.",
+        "success": "Thanks! We’ll contact you via email.",
+        "error": "Error",
+        "unknown": "Unknown error",
+        "network": "Network error. Please try again later."
+      }
     },
     "faq": {
       "q1": "Do I need a race license?",

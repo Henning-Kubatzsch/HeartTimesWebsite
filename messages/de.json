@@ -18,13 +18,26 @@
         "After-Ride: Park, Pizza, portable Box."
       ]
     },
-    "signup": {
+     "signup": {
       "title": "Anmeldung",
-      "hint": "Wähle Solo oder Team. Bei Team werden zwei Masken angezeigt.",
-      "modes": { "solo": "Solo", "team": "Team" },
-      "forms": { "solo": "Solo", "teamA": "Team · Person A", "teamB": "Team · Person B" },
-      "terms": "Ich checke: Eigenverantwortung, Trail-Etikette, Respekt. Keine Haftung übernommen.",
-      "submit": "Abschicken"
+      "hint": "Trag dich ein – wir melden uns per E-Mail.",
+      "modes": { "solo": "Solo", "team": "Paar" },
+      "forms": { "solo": "Solo", "teamA": "Person A", "teamB": "Person B" },
+      "readMore": "Mehr Infos:",
+      "links": {
+        "ten": "10 Gebote",
+        "registrationRefund": "Anmeldung & Rückerstattung"
+      },
+      "acknowledge": "Ich bestätige, die <Ten>10 Gebote</Ten> sowie <RegRefund>Anmeldung & Rückerstattung</RegRefund> gelesen zu haben.",
+      "submit": "Anmelden",
+      "alerts": {
+        "missingFields": "Bitte Name und E-Mail ausfüllen.",
+        "mustAcknowledge": "Bitte bestätige, dass du beide Seiten gelesen hast.",
+        "success": "Danke! Wir melden uns per Mail.",
+        "error": "Fehler",
+        "unknown": "Unbekannter Fehler",
+        "network": "Netzwerkfehler. Versuch es später nochmal."
+      }
     },
     "faq": {
       "q1": "Brauche ich eine Race-Lizenz?",

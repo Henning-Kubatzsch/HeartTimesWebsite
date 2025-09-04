@@ -118,9 +118,25 @@ export default function HeartTimesSite() {
       </header>
       */}
 
+       
+
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-pink-600/30">
-        <div className="max-w-5xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+        {/* Hintergrundbild */}
+        <Image
+          src="/Meta/dirtyRagSmallHeart.png"   // dein Bild
+          alt="MTB & Gravel Hero"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+
+        {/* Overlay für Kontrast (optional) */}
+        <div className="absolute inset-0 bg-black/40" />
+
+        {/* Inhalt */}
+        <div className="relative max-w-5xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-[0.95] font-salted">
               <span className="block">MTB &amp; Gravel</span>
@@ -129,38 +145,31 @@ export default function HeartTimesSite() {
             </h1>
             <p className="mt-4 text-lg text-pink-200/90">{t('hero.lead')}</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#signup" className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-pink-600 hover:bg-pink-500 transition font-semibold">
+              <a
+                href="#signup"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-pink-600 hover:bg-pink-500 transition font-semibold"
+              >
                 {t('hero.cta')}
               </a>
-              <a href="#about" className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-pink-600 hover:bg-pink-600/10 transition">
+              <a
+                href="#about"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-pink-600 hover:bg-pink-600/10 transition"
+              >
                 {t('hero.more')}
               </a>
             </div>
           </div>
+
           <div className="flex justify-center">
-            <div className="w-full max-w-md aspect-square bg-zinc-900 border border-pink-600/40 rounded-3xl p-6 flex items-center justify-center shadow-[0_0_60px_-20px_#db2777]">
+            <div className="w-full max-w-md aspect-square bg-zinc-900/80 border border-pink-600/40 rounded-3xl p-6 flex items-center justify-center shadow-[0_0_60px_-20px_#db2777]">
               <Logo className="w-70 h-70" />
             </div>
           </div>
         </div>
+
         <GridNoise />
       </section>
 
-      {/* About */}
-      <section id="about" className="max-w-5xl mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-2">
-            <h2 className="text-3xl font-bold mb-4">{t('about.title')}</h2>
-            <p className="text-zinc-200 whitespace-pre-line">{t('about.body')}</p>
-          </div>
-          <ul className="space-y-3 text-sm">
-            <li className="flex items-center gap-3"><Dot /> {t('about.points.0')}</li>
-            <li className="flex items-center gap-3"><Dot /> {t('about.points.1')}</li>
-            <li className="flex items-center gap-3"><Dot /> {t('about.points.2')}</li>
-            <li className="flex items-center gap-3"><Dot /> {t('about.points.3')}</li>
-          </ul>
-        </div>
-      </section>
 
       {/* Sign Up */}
       <section id="signup" className="border-y border-pink-600/30 bg-zinc-950/50">

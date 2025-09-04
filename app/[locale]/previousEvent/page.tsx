@@ -3,21 +3,14 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ReactNode } from 'react';
 
-// ---------- UI Bits ----------
 type GlitchTextProps = { children: ReactNode; className?: string };
 const GlitchText = ({ children, className = "" }: GlitchTextProps) => (
   <div className={`relative inline-block font-salted ${className}`}>
     <span className="relative z-10">{children}</span>
-    <span
-      className="absolute inset-0 -z-0 translate-x-[2px] translate-y-[2px] text-fuchsia-500 blur-[0.5px] select-none"
-      aria-hidden
-    >
+    <span className="absolute inset-0 -z-0 translate-x-[2px] translate-y-[2px] text-fuchsia-500 blur-[0.5px] select-none" aria-hidden>
       {children}
     </span>
-    <span
-      className="absolute inset-0 -z-0 -translate-x-[2px] -translate-y-[2px] text-white blur-[0.5px] select-none"
-      aria-hidden
-    >
+    <span className="absolute inset-0 -z-0 -translate-x-[2px] -translate-y-[2px] text-white blur-[0.5px] select-none" aria-hidden>
       {children}
     </span>
   </div>
@@ -33,10 +26,21 @@ export default async function PreviousEventPage() {
 
   return (
     <main className="min-h-screen">
-      {/* Hero im gleichen Stil wie 10commandments */}
-      <section className="relative h-[66vh] bg-[url('/Meta/startingLine.png')] bg-fixed bg-cover bg-center">
+      {/* Hero: parallax erst ab md, mobile stabil per svh und angepasster Position */}
+      <section
+        className="
+          relative 
+          h-[66svh] md:h-[66vh]
+          bg-[url('/Meta/startingLine.png')]
+          bg-cover
+          bg-[position:50%_35%] sm:bg-[position:50%_45%] md:bg-center
+          bg-no-repeat
+          bg-scroll md:bg-fixed
+        "
+      >
         {/* helleres Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40" />
+
         {/* Titel mittig */}
         <div className="relative z-10 max-w-5xl mx-auto h-full flex items-center justify-center px-4">
           <h1 className="w-full text-center text-4xl md:text-6xl font-black text-white drop-shadow-lg">
